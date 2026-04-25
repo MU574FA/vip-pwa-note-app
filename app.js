@@ -147,10 +147,49 @@ function closeModal() {
   editingId = null;
 }
 
+// ── PWA Install Handler ──────────────────────────────────────────
+
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const installBtn = document.getElementById('install-btn');
+  if (installBtn) {
+    installBtn.style.display = 'flex';
+  }
+});
+
+window.addEventListener('appinstalled', () => {
+  showToast('App installed successfully! 🎉');
+  deferredPrompt = null;
+  const installBtn = document.getElementById('install-btn');
+  if (installBtn) {
+    installBtn.style.display = 'none';
+  }
+});
+
+function handleInstallClick() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        showToast('Installing app...');
+      }
+      deferredPrompt = null;
+    });
+  }
+}
+
 // ── Event Listeners ──────────────────────────────────────────────
 
 document.getElementById('fab').addEventListener('click', () => openModal());
 document.getElementById('close-modal').addEventListener('click', closeModal);
+
+const installBtn = document.getElementById('install-btn');
+if (installBtn) {
+  installBtn.addEventListener('click', handleInstallClick);
+}
 
 document.getElementById('modal-overlay').addEventListener('click', (e) => {
   if (e.target === document.getElementById('modal-overlay')) closeModal();
