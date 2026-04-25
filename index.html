@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5c542" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="A simple offline notes app" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>Notes</title>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="header-top">
+      <h1>NOTES</h1>
+      <span id="note-count">0 notes</span>
+    </div>
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="search" id="search-input" placeholder="Search notes..." />
+    </div>
+  </header>
+
+  <!-- ── NOTES LIST ── -->
+  <main id="notes-list"></main>
+
+  <!-- ── ADD BUTTON ── -->
+  <button id="fab" aria-label="Add note">+</button>
+
+  <!-- ── MODAL ── -->
+  <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-title">NEW NOTE</h2>
+        <button id="close-modal" aria-label="Close">✕</button>
+      </div>
+      <input
+        type="text"
+        id="note-title-input"
+        placeholder="Title..."
+        maxlength="80"
+      />
+      <textarea
+        id="note-body-input"
+        placeholder="Write your note here..."
+        maxlength="2000"
+      ></textarea>
+      <button id="save-note">SAVE NOTE</button>
+    </div>
+  </div>
+
+  <!-- ── TOAST ── -->
+  <div id="toast"></div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

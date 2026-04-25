@@ -1,0 +1,22 @@
+{
+  "name": "Notes App",
+  "short_name": "Notes",
+  "description": "A simple PWA notes app with offline storage",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#f5c542",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192x192/f5c542/0f0f0f?text=N",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512/f5c542/0f0f0f?text=N",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
